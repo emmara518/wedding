@@ -80,6 +80,11 @@
   --aurora-4:#fff0d9;
   --font-display:'Lalezar',cursive;
   --font-body:'Cairo',sans-serif;
+  --space-xs:6px;
+  --space-sm:10px;
+  --space-md:16px;
+  --space-lg:24px;
+  --space-xl:32px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -184,8 +189,8 @@ body{
 /* === MAIN LANDING === */
 .landing{
   max-width:540px;margin:0 auto;
-  padding:24px 16px 80px;
-  display:flex;flex-direction:column;gap:24px;
+  padding:var(--space-lg) 16px 80px;
+  display:flex;flex-direction:column;gap:var(--space-lg);
   position:relative;z-index:5;
 }
 
@@ -196,18 +201,21 @@ body{
   -webkit-backdrop-filter:blur(16px) saturate(1.2);
   border:1.5px solid var(--glass-border);
   border-radius:var(--radius);
-  padding:26px 22px;
+  padding:var(--space-xl) var(--space-lg);
   box-shadow:var(--shadow);
   position:relative;text-align:center;
+}
+.js .panel{
   opacity:0;transform:translateY(40px) scale(.97);
   transition:opacity .7s ease,transform .7s cubic-bezier(.22,.78,.32,1);
 }
 .panel.reveal{opacity:1;transform:translateY(0) scale(1);}
+.panel > * + *{margin-top:var(--space-md);}
 
 /* === HERO SECTION === */
 .panel.hero{
   border-radius:52px 52px var(--radius) 14px;
-  padding:32px 24px 38px;
+  padding:var(--space-xl) var(--space-lg) 42px;
   position:relative;
   background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(255,240,248,.86));
   overflow:hidden;
@@ -218,45 +226,45 @@ body{
   pointer-events:none;
 }
 .hero-illustration{
-  width:200px;height:120px;margin:0 auto 10px;position:relative;
+  width:200px;height:120px;margin:0 auto var(--space-sm);position:relative;
 }
 .hero-illustration svg{width:100%;height:100%;}
 .hero-badge{
   display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:1.5px;
   color:var(--pink-2);background:rgba(255,255,255,.7);
-  backdrop-filter:blur(6px);padding:5px 16px;border-radius:30px;margin-bottom:10px;
+  backdrop-filter:blur(6px);padding:5px 16px;border-radius:30px;margin-bottom:var(--space-sm);
   border:1.5px solid rgba(255,107,150,.25);
 }
 
-
-
 /* === DETAILS === */
 .glass-grid{
-  display:flex;flex-direction:column;gap:12px;
-  background:rgba(255,244,248,.6);backdrop-filter:blur(8px);
-  border-radius:26px;padding:20px;margin:16px 0;
-  border:1px solid rgba(255,183,194,.3);
+  display:flex;flex-direction:column;gap:var(--space-sm);
+  background:rgba(255,240,245,.75);backdrop-filter:blur(8px);
+  border-radius:26px;padding:var(--space-md) 20px;
+  border:1.5px solid rgba(255,183,194,.4);
 }
 .detail-item{
-  display:flex;align-items:center;gap:12px;justify-content:center;
-  font-weight:700;font-size:1.1rem;
+  display:flex;align-items:center;gap:var(--space-sm);justify-content:center;
+  font-weight:700;font-size:1.1rem;color:var(--plum);
 }
 .detail-icon{font-size:1.8rem;}
+.venue-name{color:var(--pink-2);font-size:1.15rem;}
 .map-embed{
-  border-radius:20px;overflow:hidden;margin:14px 0;
-  box-shadow:0 4px 16px rgba(0,0,0,.06);
+  border-radius:20px;overflow:hidden;
+  border:2px solid rgba(255,183,194,.3);
+  box-shadow:0 4px 16px rgba(0,0,0,.08);
 }
 .map-embed iframe{width:100%;height:180px;border:none;display:block;}
 
 /* === RSVP FORM === */
 .rsvp-form{
-  display:flex;flex-direction:column;gap:14px;
-  margin:18px 0 6px;
+  display:flex;flex-direction:column;gap:var(--space-md);
+  margin:var(--space-md) 0 var(--space-xs);
 }
 .form-group{text-align:right;}
 .form-group label{
   display:block;font-weight:700;font-size:.9rem;
-  color:var(--pink-3);margin-bottom:4px;
+  color:var(--pink-3);margin-bottom:var(--space-xs);
 }
 .form-group input,.form-group select{
   width:100%;padding:12px 16px;border-radius:16px;
@@ -273,27 +281,13 @@ body{
   background-repeat:no-repeat;background-position:left 14px center;padding-left:36px;
 }
 
-/* === DRESS CODE === */
-.dress-palette{display:flex;justify-content:center;gap:10px;margin:12px 0;}
-.dress-swatch{
-  width:44px;height:44px;border-radius:50%;border:3px solid #fff;
-  box-shadow:0 3px 10px rgba(0,0,0,.08);
-}
-.dress-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px;}
-.dress-tag{
-  background:#fff;border:2px solid var(--pink-2);
-  color:var(--pink-3);padding:6px 16px;border-radius:30px;
-  font-weight:700;font-size:.85rem;
-}
-
 /* === WEATHER === */
 .weather-widget{
-  display:inline-flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.5);backdrop-filter:blur(6px);
+  display:inline-flex;align-items:center;gap:var(--space-sm);
+  background:rgba(255,240,245,.85);backdrop-filter:blur(6px);
   padding:8px 18px;border-radius:30px;
-  font-weight:700;font-size:.95rem;
-  border:1.5px solid rgba(255,183,194,.3);
-  margin:6px 0;
+  font-weight:700;font-size:.95rem;color:var(--plum);
+  border:1.5px solid rgba(255,183,194,.4);
 }
 .weather-widget .wi{font-size:1.5rem;}
 
@@ -306,7 +300,7 @@ body{
 
 /* === QR CODE === */
 .qr-wrap{
-  display:flex;justify-content:center;margin:16px 0;
+  display:flex;justify-content:center;
 }
 #qrcode{
   background:#fff;padding:12px;border-radius:20px;
@@ -322,7 +316,7 @@ body{
   -webkit-backdrop-filter:blur(18px) saturate(1.3);
   border-top:1.5px solid rgba(255,183,194,.35);
   display:flex;justify-content:space-around;align-items:center;
-  padding:8px 4px 12px;
+  padding:var(--space-sm) 4px calc(var(--space-sm) + 4px);
   transform:translateY(100%);
   transition:transform .5s cubic-bezier(.22,.78,.32,1);
 }
@@ -349,7 +343,7 @@ body{
   box-shadow:0 7px 0 var(--pink-2),0 12px 25px rgba(255,105,135,.22);
   transition:transform .1s ease,box-shadow .1s ease,background .2s;
   text-decoration:none;display:inline-flex;align-items:center;gap:8px;
-  margin:6px 4px;position:relative;overflow:hidden;
+  margin:var(--space-xs) var(--space-xs);position:relative;overflow:hidden;
 }
 .btn::after{
   content:"";position:absolute;inset:0;
@@ -361,6 +355,7 @@ body{
 .btn:active{transform:translateY(5px);box-shadow:0 2px 0 var(--pink-2),0 6px 15px rgba(255,105,135,.18);}
 .btn:focus-visible{outline:3px solid var(--pink-1);outline-offset:3px;}
 .btn-outline{background:#fff;color:var(--pink-1);box-shadow:0 6px 0 #ffb6c1,0 8px 15px rgba(0,0,0,.04);}
+.btn-block{width:100%;justify-content:center;}
 .btn-plum{background:linear-gradient(135deg,var(--pink-3),var(--plum));box-shadow:0 6px 0 var(--plum),0 10px 22px rgba(110,46,64,.2);}
 .btn-glass{
   background:rgba(255,255,255,.7);backdrop-filter:blur(8px);
@@ -374,11 +369,11 @@ body{
   font-family:var(--font-body);
 }
 .chip:hover{background:var(--pink-3);color:#fff;transform:translateY(-2px);}
-.chip:focus-visible{outline:3px solid var(--pink-1);outline-offset:2px;}
+.action-row{display:flex;gap:var(--space-sm);justify-content:center;flex-wrap:wrap;}
 
 /* === COUNTDOWN === */
 .countdown{
-  display:flex;justify-content:center;gap:10px;margin:18px 0 4px;flex-wrap:wrap;
+  display:flex;justify-content:center;gap:var(--space-sm);flex-wrap:wrap;
 }
 .count-box{
   background:linear-gradient(160deg,#fff,#fff2f7);
@@ -398,7 +393,7 @@ body{
 .speech-bubble{
   background:#fff0f5;border:2px dashed #ff8da1;
   border-radius:30px 30px 30px 6px;
-  padding:11px 20px;display:inline-block;margin:10px 0;
+  padding:11px 20px;display:inline-block;
   font-weight:700;font-size:1.1rem;color:var(--pink-2);position:relative;
 }
 .speech-bubble::after{
@@ -411,10 +406,10 @@ body{
 h1{
   font-family:var(--font-display);
   font-size:3.2rem;color:var(--pink-2);
-  margin:6px 0;line-height:1.1;letter-spacing:1px;
+  line-height:1.1;letter-spacing:1px;
   text-shadow:2px 3px 0 var(--pink-soft);
 }
-h2{font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:var(--pink-3);margin-bottom:14px;}
+h2{font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:var(--pink-3);}
 .lead{font-size:1.15rem;font-weight:600;color:#7a4a5c;}
 
 /* === HEART BEAT === */
@@ -437,6 +432,27 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
 
 /* === COUNTER === */
 .counter-display{font-size:1.8rem;font-weight:900;color:var(--pink-2);}
+.counter-wrap{display:flex;flex-direction:column;align-items:center;gap:var(--space-sm);}
+.counter-actions{display:flex;gap:var(--space-sm);justify-content:center;}
+
+/* === SECTION EMOJI === */
+.sec-emoji{font-size:54px;line-height:1;}
+
+/* === ENVELOPE NAMES === */
+.env-names{font-family:var(--font-display);font-size:1.5rem;color:var(--pink-1);}
+
+/* === LOADER SUB === */
+.loader-sub{font-weight:700;color:var(--pink-2);font-size:.9rem;}
+
+/* === TOAST === */
+.toast{
+  position:fixed;top:var(--space-lg);left:50%;transform:translateX(-50%) translateY(-20px);
+  z-index:200;padding:14px 24px;border-radius:20px;font-weight:700;font-size:1rem;
+  box-shadow:0 8px 30px rgba(0,0,0,.12);opacity:0;pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease;white-space:nowrap;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+.toast-success{background:#e8f5e9;color:#2e7d32;border:2px solid #a5d6a7;}
 
 /* === RESPONSIVE === */
 @media (max-width:420px){
@@ -444,7 +460,7 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
   h1{font-size:2.6rem;}
   .count-box{min-width:62px;}
   .count-box b{font-size:1.7rem;}
-  .panel{padding:28px 16px;}
+  .panel{padding:var(--space-lg) var(--space-md);}
 }
 @media (min-width:768px){
   .landing{max-width:580px;padding:40px 20px 90px;}
@@ -453,7 +469,7 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
 /* === ACCESSIBILITY === */
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;}
-  .panel{opacity:1;transform:none!important;}
+  .js .panel{opacity:1;transform:none!important;}
   .envelope-overlay{display:none;}
 }
 .sr-only{
@@ -472,7 +488,7 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
   <div class="envelope-inner">
     <span class="env-icon" aria-hidden="true">💌</span>
     <div class="env-title">دعوة زفاف</div>
-    <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--pink-1);margin:4px 0;">خالد ❤️ ياسمين</div>
+    <div class="env-names">خالد ❤️ ياسمين</div>
     <div class="env-sub">👆 اضغط لفتح الدعوة</div>
   </div>
 </div>
@@ -485,7 +501,7 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
     <span style="color:var(--pink-1);margin:0 4px;">❤️</span>
     <span>ي</span><span>ا</span><span>س</span><span>م</span><span>ي</span><span>ن</span>
   </div>
-  <p style="font-weight:700;color:var(--pink-2);font-size:.9rem;">بنجهّز فرحتنا...</p>
+  <p class="loader-sub">بنجهّز فرحتنا...</p>
   <div class="loader-bar" aria-hidden="true"><div class="loader-bar-fill"></div></div>
 </div>
 
@@ -539,7 +555,7 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
     <div class="speech-bubble">أخيراً لقينا بعض!</div>
     <h1>خالد &amp; ياسمين</h1>
     <p class="lead">عاملين حسابهم يفرحوا بيكوا 🎉</p>
-    <div style="margin-top:16px;">
+    <div>
       <a href="#rsvp" class="btn" aria-label="احجز مكانك في الفرح">💌 احجز مكانك</a>
     </div>
   </section>
@@ -553,16 +569,14 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
       <div class="count-box"><b id="minutes">00</b><span>دقيقة</span></div>
       <div class="count-box"><b id="seconds">00</b><span>ثانية</span></div>
     </div>
-    <p class="lead" style="margin-top:12px;">العدّ التنازلي بدأ.. جهّزوا نفسكوا! 🥳</p>
+    <p class="lead">العدّ التنازلي بدأ.. جهّزوا نفسكوا! 🥳</p>
   </section>
-
-
 
   <!-- RSVP FORM -->
   <section class="panel" id="rsvp" aria-label="تأكيد الحضور">
     <h2>🎈 تأكيد الحضور</h2>
-    <div style="font-size:54px;" aria-hidden="true">📋✨</div>
-    <p class="lead" style="margin:8px 0;">عايزين نعرف مين جايّ يشاركنا الفرحة دي</p>
+    <div class="sec-emoji" aria-hidden="true">📋✨</div>
+    <p class="lead">عايزين نعرف مين جايّ يشاركنا الفرحة دي</p>
     <form class="rsvp-form" id="rsvpForm" novalidate>
       <div class="form-group">
         <label for="rsvpName">الاسم كامل *</label>
@@ -592,21 +606,18 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
           <option value="maybe">🤔 لسه ما قررت</option>
         </select>
       </div>
-      <button type="submit" class="btn" style="width:100%;justify-content:center;">💌 إرسال التأكيد</button>
+      <button type="submit" class="btn btn-block">💌 إرسال التأكيد</button>
     </form>
-    <div id="rsvpSuccess" style="display:none;margin-top:10px;padding:16px;background:#e8f5e9;border-radius:20px;font-weight:700;color:#2e7d32;">
-      تم استلام تأكيدك! شكراً جزيلاً 🤍
-    </div>
   </section>
 
   <!-- EVENT DETAILS -->
   <section class="panel" aria-label="تفاصيل الزفاف">
     <h2>🗓️ موعد الفرحة الكبيرة</h2>
-    <div style="font-size:54px;line-height:1;margin-bottom:6px;" aria-hidden="true">🎊🏰🎊</div>
+    <div class="sec-emoji" aria-hidden="true">🎊🏰🎊</div>
     <div class="glass-grid">
       <div class="detail-item"><span class="detail-icon">📅</span> الأربعاء 7 أكتوبر 2026</div>
       <div class="detail-item"><span class="detail-icon">🕖</span> الساعة 7 مساءً</div>
-      <div class="detail-item"><span class="detail-icon">📍</span> واحة الباشا — القاهرة</div>
+      <div class="detail-item"><span class="detail-icon">📍</span><span class="venue-name">واحة الباشا - القاهرة</span></div>
     </div>
 
     <!-- Weather -->
@@ -617,11 +628,11 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
 
     <!-- Map -->
     <div class="map-embed">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.789!2d31.3456!3d30.1234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z2YXYt9i52KfYoSDZh9i52KfYrw!5e0!3m2!1sar!2seg!4v1" loading="lazy" title="موقع واحة الباشا على خرائط جوجل"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.789!2d31.0504827!3d30.4169621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145879f160960821%3A0xaea6c4658cb1e37c!2z2YXYt9i52KfYoSDZh9i52KfYrw!5e0!3m2!1sar!2seg!4v1" loading="lazy" title="موقع واحة الباشا على خرائط جوجل"></iframe>
     </div>
 
     <div class="action-row">
-      <a class="chip" href="https://maps.google.com/?q=%D9%88%D8%A7%D8%AD%D8%A9+%D8%A7%D9%84%D8%A8%D8%A7%D8%B4%D8%A7+%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9" target="_blank" rel="noopener" aria-label="فتح الموقع على الخريطة">🗺️ افتح الخريطة</a>
+      <a class="chip" href="https://maps.app.goo.gl/tDhVxHWTVG8h3TD19" target="_blank" rel="noopener" aria-label="فتح الموقع على الخريطة">🗺️ افتح الخريطة</a>
       <button class="chip" id="addCalendar" aria-label="إضافة الموعد للتقويم">📆 ضيف الموعد</button>
       <a class="chip" href="https://www.facebook.com/%D9%88%D8%A7%D8%AD%D8%A9-%D8%A7%D9%84%D8%A8%D8%A7%D8%B4%D8%A7-110288727939368/" target="_blank" rel="noopener" aria-label="صفحة المكان على فيسبوك">📍 صفحة المكان</a>
     </div>
@@ -634,7 +645,7 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
     <div class="qr-wrap">
       <div id="qrcode"></div>
     </div>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px;">
+    <div>
       <button class="btn share-btn" id="shareBtn" aria-label="مشاركة الدعوة">📤 شارك الدعوة</button>
     </div>
   </section>
@@ -642,28 +653,28 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
   <!-- GIFTS -->
   <section class="panel" aria-label="الهدية">
     <h2>🎁 هديتكم الأغلى</h2>
-    <div style="font-size:54px;" aria-hidden="true">🎀💝</div>
-    <p class="lead">أهم هدية لينا هي وجودكم بينا</p>
-    <p style="margin-top:6px;">ولو حبيتوا تدلّعونا، تقدروا تشاركوا معانا في <span class="beating-heart">💖</span> عداد الحب</p>
-    <div style="margin:14px 0;">
+    <div class="sec-emoji" aria-hidden="true">🎀💝</div>
+    <p>أهم هدية لينا هي وجودكم بينا</p>
+    <p>ولو حبيتوا تدلّعونا، تقدروا تشاركوا معانا في <span class="beating-heart">💖</span> عداد الحب</p>
+    <div class="counter-wrap">
       <span class="counter-display" id="loveCounter">💖 0</span>
-      <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+      <div class="counter-actions">
         <button class="chip" id="loveBtn">💝 +1</button>
       </div>
     </div>
-    <a href="#" class="btn btn-plum" id="giftBtn" style="margin-top:6px;">💍 شوفوا قائمة الهدايا</a>
+    <a href="#" class="btn btn-plum" id="giftBtn">💍 شوفوا قائمة الهدايا</a>
   </section>
 
   <div class="divider">❀ ⋆ ❀</div>
   <footer>
     <p>صُنع بحب كبير <span class="beating-heart">❤️</span> | خالد &amp; ياسمين</p>
-    <p style="font-size:.78rem;margin-top:4px;">الدعوة الكرتونية خاصة جداً.. فرحتنا مش هتكمل غير بيكوا!</p>
+    <p style="font-size:.78rem;">الدعوة الكرتونية خاصة جداً.. فرحتنا مش هتكمل غير بيكوا!</p>
   </footer>
 </main>
 
 <!-- Floating Bottom Bar -->
 <nav class="bottom-bar" id="bottomBar" aria-label="شريط الإجراءات السريعة">
-  <a class="bar-item" href="https://maps.google.com/?q=%D9%88%D8%A7%D8%AD%D8%A9+%D8%A7%D9%84%D8%A8%D8%A7%D8%B4%D8%A7+%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9" target="_blank" rel="noopener" aria-label="الموقع">
+   <a class="bar-item" href="https://maps.app.goo.gl/tDhVxHWTVG8h3TD19" target="_blank" rel="noopener" aria-label="الموقع">
     <span class="bi">📍</span>
     <span class="bi-label">الموقع</span>
   </a>
@@ -671,7 +682,7 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
     <span class="bi">📅</span>
     <span class="bi-label">التقويم</span>
   </button>
-  <a class="bar-item" href="https://wa.me/201000000000?text=%D8%A3%D9%86%D8%A7%20%D8%AC%D8%A7%D9%8A%D9%91%20%D8%A7%D9%84%D9%81%D8%B1%D8%AD%20%D9%8A%D8%A7%20%D8%AC%D9%85%D8%A7%D8%B9%D8%A9!%20%F0%9F%A5%B3" target="_blank" rel="noopener" aria-label="واتساب">
+   <a class="bar-item" href="https://wa.me/201000675188?text=%D8%A3%D9%86%D8%A7%20%D8%AC%D8%A7%D9%8A%D9%91%20%D8%A7%D9%84%D9%81%D8%B1%D8%AD%20%D9%8A%D8%A7%20%D8%AC%D9%85%D8%A7%D8%B9%D8%A9!%20%F0%9F%A5%B3" target="_blank" rel="noopener" aria-label="واتساب">
     <span class="bi">💬</span>
     <span class="bi-label">واتساب</span>
   </a>
@@ -681,9 +692,12 @@ footer{text-align:center;color:#b34e5e;font-size:.88rem;padding:6px 10px;}
   </a>
 </nav>
 
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
 <script>
 (function(){
 'use strict';
+document.documentElement.classList.add('js');
 
 /* ===== PRELOADER ===== */
 window.addEventListener('load', () => {
@@ -717,6 +731,13 @@ const panelObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
 document.querySelectorAll('.panel').forEach(p => panelObserver.observe(p));
+// Fallback: reveal any panels the observer missed after 5s
+setTimeout(() => {
+  document.querySelectorAll('.panel:not(.reveal)').forEach(p => {
+    p.classList.add('reveal');
+    panelObserver.unobserve(p);
+  });
+}, 5000);
 
 /* ===== COUNTDOWN ===== */
 const weddingDate = new Date(2026, 9, 7, 19, 0, 0).getTime();
@@ -770,54 +791,60 @@ function downloadICS(){
   a.click();
   URL.revokeObjectURL(url);
 }
-document.getElementById('addCalendar').addEventListener('click', downloadICS);
-document.getElementById('addCalendarBar').addEventListener('click', downloadICS);
+const calBtn = document.getElementById('addCalendar');
+const calBarBtn = document.getElementById('addCalendarBar');
+if(calBtn) calBtn.addEventListener('click', downloadICS);
+if(calBarBtn) calBarBtn.addEventListener('click', downloadICS);
 
 /* ===== RSVP FORM ===== */
 const rsvpForm = document.getElementById('rsvpForm');
-const rsvpSuccess = document.getElementById('rsvpSuccess');
-rsvpForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const name = document.getElementById('rsvpName').value.trim();
-  const phone = document.getElementById('rsvpPhone').value.trim();
-  const count = document.getElementById('rsvpCount').value;
-  const attend = document.getElementById('rsvpAttend').value;
-  if(!name || !count || !attend){
-    alert('من فضلك املأ الحقول المطلوبة');
-    return;
-  }
-  // Store in localStorage
-  const rsvps = JSON.parse(localStorage.getItem('weddingRsvps') || '[]');
-  rsvps.push({ name, phone, count, attend, date: new Date().toISOString() });
-  localStorage.setItem('weddingRsvps', JSON.stringify(rsvps));
-  rsvpForm.reset();
-  rsvpSuccess.style.display = 'block';
-  setTimeout(() => { rsvpSuccess.style.display = 'none'; }, 4000);
-
-  // Also send via WhatsApp as fallback
-  const attendText = attend === 'yes' ? '✅ هحضر' : attend === 'no' ? '❌ مش هقدر' : '🤔 لسه ما قررت';
-  const msg = `تأكيد حضور زفاف خالد وياسمين:\n👤 ${name}\n👥 ${count}\n📌 ${attendText}${phone ? '\n📞 ' + phone : ''}`;
-  window.open('https://wa.me/201000000000?text=' + encodeURIComponent(msg), '_blank');
-});
+const toastEl = document.getElementById('toast');
+let toastTimer;
+function showToast(msg, cls){
+  clearTimeout(toastTimer);
+  toastEl.textContent = msg;
+  toastEl.className = 'toast ' + cls + ' show';
+  toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3500);
+}
+if(rsvpForm){
+  rsvpForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('rsvpName').value.trim();
+    const phone = document.getElementById('rsvpPhone').value.trim();
+    const count = document.getElementById('rsvpCount').value;
+    const attend = document.getElementById('rsvpAttend').value;
+    if(!name || !count || !attend){
+      alert('من فضلك املأ الحقول المطلوبة');
+      return;
+    }
+    const rsvps = JSON.parse(localStorage.getItem('weddingRsvps') || '[]');
+    rsvps.push({ name, phone, count, attend, date: new Date().toISOString() });
+    localStorage.setItem('weddingRsvps', JSON.stringify(rsvps));
+    rsvpForm.reset();
+    showToast('تم استلام تأكيدك! شكراً جزيلاً 🤍', 'toast-success');
+  });
+}
 
 /* ===== SHARE ===== */
-document.getElementById('shareBtn').addEventListener('click', async () => {
-  const shareData = {
-    title: 'دعوة زفاف خالد وياسمين',
-    text: 'أنتم مدعوون لحضور زفاف خالد وياسمين! الأربعاء 7 أكتوبر 2026 🎉💍',
-    url: window.location.href
-  };
-  if(navigator.share && window.innerWidth < 768){
-    try { await navigator.share(shareData); return; } catch(e) {}
-  }
-  // Fallback
-  try {
-    await navigator.clipboard.writeText(window.location.href);
-    alert('تم نسخ الرابط! شاركه مع أحبابك 🤍');
-  } catch {
-    prompt('انسخ الرابط:', window.location.href);
-  }
-});
+const shareBtn = document.getElementById('shareBtn');
+if(shareBtn){
+  shareBtn.addEventListener('click', async () => {
+    const shareData = {
+      title: 'دعوة زفاف خالد وياسمين',
+      text: 'أنتم مدعوون لحضور زفاف خالد وياسمين! الأربعاء 7 أكتوبر 2026 🎉💍',
+      url: window.location.href
+    };
+    if(navigator.share && window.innerWidth < 768){
+      try { await navigator.share(shareData); return; } catch(e) {}
+    }
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert('تم نسخ الرابط! شاركه مع أحبابك 🤍');
+    } catch {
+      prompt('انسخ الرابط:', window.location.href);
+    }
+  });
+}
 
 /* ===== QR CODE ===== */
 (function loadQR(){
@@ -839,35 +866,40 @@ document.getElementById('shareBtn').addEventListener('click', async () => {
 /* ===== LOVE COUNTER ===== */
 let loveCount = parseInt(localStorage.getItem('weddingLoveCount') || '0');
 const loveDisplay = document.getElementById('loveCounter');
-function updateLove(){ loveDisplay.textContent = '💖 ' + loveCount; }
+const loveBtn = document.getElementById('loveBtn');
+function updateLove(){ if(loveDisplay) loveDisplay.textContent = '💖 ' + loveCount; }
 updateLove();
-document.getElementById('loveBtn').addEventListener('click', () => {
-  loveCount++;
-  localStorage.setItem('weddingLoveCount', loveCount);
-  updateLove();
-  // Spawn hearts
-  for(let i=0;i<8;i++){
-    const h = document.createElement('span');
-    h.className = 'heart-particle';
-    h.textContent = ['💖','💕','💗','✨'][i%4];
-    h.style.left = (window.innerWidth * 0.2 + Math.random() * window.innerWidth * 0.6) + 'px';
-    h.style.top = (window.innerHeight * 0.6) + 'px';
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 1000);
-  }
-});
+if(loveBtn){
+  loveBtn.addEventListener('click', () => {
+    loveCount++;
+    localStorage.setItem('weddingLoveCount', loveCount);
+    updateLove();
+    for(let i=0;i<8;i++){
+      const h = document.createElement('span');
+      h.className = 'heart-particle';
+      h.textContent = ['💖','💕','💗','✨'][i%4];
+      h.style.left = (window.innerWidth * 0.2 + Math.random() * window.innerWidth * 0.6) + 'px';
+      h.style.top = (window.innerHeight * 0.6) + 'px';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 1000);
+    }
+  });
+}
 
 /* ===== GIFT BUTTON ===== */
-document.getElementById('giftBtn').addEventListener('click', (e) => {
-  if(e.currentTarget.getAttribute('href') === '#'){
-    e.preventDefault();
-    if(loveCount > 0){
-      alert('شكراً لدعمكم! 💝 قيمة المحبة: ' + loveCount + ' 💖');
-    } else {
-      alert('ضع رابط قائمة الهدايا أو عدّاد الحب هنا 💝');
+const giftBtn = document.getElementById('giftBtn');
+if(giftBtn){
+  giftBtn.addEventListener('click', (e) => {
+    if(e.currentTarget.getAttribute('href') === '#'){
+      e.preventDefault();
+      if(loveCount > 0){
+        alert('شكراً لدعمكم! 💝 قيمة المحبة: ' + loveCount + ' 💖');
+      } else {
+        alert('ضع رابط قائمة الهدايا أو عدّاد الحب هنا 💝');
+      }
     }
-  }
-});
+  });
+}
 
 /* ===== WEATHER WIDGET ===== */
 (function loadWeather(){
@@ -888,45 +920,49 @@ let audioCtx = null;
 let isPlaying = false;
 let oscillator = null;
 let gainNode = null;
+let melodyTimer = null;
 
-musicBtn.addEventListener('click', () => {
-  if(!audioCtx){
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    gainNode = audioCtx.createGain();
-    gainNode.gain.value = 0.08;
-    gainNode.connect(audioCtx.destination);
-    oscillator = audioCtx.createOscillator();
-    oscillator.type = 'sine';
-    oscillator.frequency.value = 523.25; // C5
-    oscillator.connect(gainNode);
-    oscillator.start();
-    // Simple melody timer
-    playMelody();
-    isPlaying = true;
-    musicBtn.classList.add('playing');
-    musicBtn.textContent = '🔊';
-  } else if(isPlaying) {
-    audioCtx.suspend();
-    isPlaying = false;
-    musicBtn.classList.remove('playing');
-    musicBtn.textContent = '🎵';
-  } else {
-    audioCtx.resume();
-    isPlaying = true;
-    musicBtn.classList.add('playing');
-    musicBtn.textContent = '🔊';
-  }
-});
+if(musicBtn){
+  musicBtn.addEventListener('click', () => {
+    if(!audioCtx){
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      gainNode = audioCtx.createGain();
+      gainNode.gain.value = 0.08;
+      gainNode.connect(audioCtx.destination);
+      oscillator = audioCtx.createOscillator();
+      oscillator.type = 'sine';
+      oscillator.frequency.value = 523.25;
+      oscillator.connect(gainNode);
+      oscillator.start();
+      playMelody();
+      isPlaying = true;
+      musicBtn.classList.add('playing');
+      musicBtn.textContent = '🔊';
+    } else if(isPlaying) {
+      audioCtx.suspend();
+      isPlaying = false;
+      musicBtn.classList.remove('playing');
+      musicBtn.textContent = '🎵';
+    } else {
+      audioCtx.resume();
+      isPlaying = true;
+      musicBtn.classList.add('playing');
+      musicBtn.textContent = '🔊';
+      playMelody();
+    }
+  });
+}
 
 function playMelody(){
   if(!isPlaying || !audioCtx) return;
-  const notes = [523.25, 587.33, 659.25, 698.46, 783.99, 698.46, 659.25, 587.33]; // C D E F G F E D
+  clearTimeout(melodyTimer);
+  const notes = [523.25, 587.33, 659.25, 698.46, 783.99, 698.46, 659.25, 587.33];
   let i = 0;
   function playNote(){
     if(!isPlaying || !oscillator) return;
     oscillator.frequency.setValueAtTime(notes[i], audioCtx.currentTime);
     i = (i + 1) % notes.length;
-    setTimeout(playNote, 600);
+    melodyTimer = setTimeout(playNote, 600);
   }
   playNote();
 }
@@ -986,12 +1022,14 @@ function playMelody(){
 /* ===== HEART PARTICLES ON CLICK ===== */
 document.querySelectorAll('.btn, .chip').forEach(btn => {
   btn.addEventListener('click', (e) => {
+    const cx = e.clientX || window.innerWidth / 2;
+    const cy = e.clientY || window.innerHeight / 2;
     for(let i=0;i<6;i++){
       const h = document.createElement('span');
       h.className = 'heart-particle';
       h.textContent = ['💖','💕','✨','💗'][i%4];
-      h.style.left = (e.clientX + (Math.random()*40-20)) + 'px';
-      h.style.top = (e.clientY + (Math.random()*20-10)) + 'px';
+      h.style.left = (cx + (Math.random()*40-20)) + 'px';
+      h.style.top = (cy + (Math.random()*20-10)) + 'px';
       document.body.appendChild(h);
       setTimeout(() => h.remove(), 1000);
     }
